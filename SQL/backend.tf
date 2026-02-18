@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    bucket = "REEMPLAZA_BUCKET_TFSTATE"
-    prefix = "tfstate/cloudsql-psc/gccspsp50-mlflow-prd"
+    bucket = "is-csto-terrafom-deploy"
+    prefix = "tfstate/cloudsql-psc/dev"
   }
 
   required_version = ">= 1.5.0"

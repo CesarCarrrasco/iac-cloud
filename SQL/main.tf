@@ -1,16 +1,17 @@
 locals {
   # Tu script metía la IP en labels con puntos reemplazados. Si no hay IP fija, ponemos "auto".
   psc_ip_label = (
-    var.psc_ip != null && trim(var.psc_ip) != ""
+    #var.psc_ip != null && trim(var.psc_ip) != ""
+    var.psc_ip != null && trimspace(var.psc_ip) != ""
     ? replace(var.psc_ip, ".", "-")
     : "auto"
   )
 }
 
 provider "google" {
-  project                     = var.sql_project_id
-  region                      = var.region
-  impersonate_service_account  = var.impersonate_service_account
+  project = var.sql_project_id
+  region  = var.region
+  #impersonate_service_account  = var.impersonate_service_account
 
   # Recomendado cuando impersonas para evitar errores de cuota en algunos APIs:
   user_project_override = var.billing_project != null
@@ -18,10 +19,10 @@ provider "google" {
 }
 
 provider "google" {
-  alias                       = "consumer"
-  project                     = var.consumer_project_id
-  region                      = var.region
-  impersonate_service_account  = var.impersonate_service_account
+  alias   = "consumer"
+  project = var.consumer_project_id
+  region  = var.region
+  #impersonate_service_account  = var.impersonate_service_account
 
   user_project_override = var.billing_project != null
   billing_project       = var.billing_project
@@ -56,11 +57,11 @@ resource "google_sql_database_instance" "psc" {
   project          = var.sql_project_id
   region           = var.region
   database_version = var.sql_database_version
-  edition          = var.sql_edition
 
   deletion_protection = var.deletion_protection
 
   settings {
+    edition           = "ENTERPRISE"
     tier              = var.sql_tier
     availability_type = var.availability_type
 
@@ -121,7 +122,8 @@ resource "google_compute_address" "psc_ip" {
   subnetwork   = data.google_compute_subnetwork.consumer_subnet.self_link
 
   # Si var.psc_ip es null o "", se omite y GCP asigna una IP automáticamente
-  address = (var.psc_ip != null && trim(var.psc_ip) != "") ? var.psc_ip : null
+  #address = (var.psc_ip != null && trim(var.psc_ip) != "") ? var.psc_ip : null
+  address = (var.psc_ip != null && trimspace(var.psc_ip) != "") ? var.psc_ip : null
 
   depends_on = [
     google_project_service.consumer_apis

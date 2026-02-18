@@ -1,7 +1,7 @@
-variable "impersonate_service_account" {
-  type        = string
-  description = "Service Account a impersonar (ej: is-sa-tf-infra@PROJ.iam.gserviceaccount.com)"
-}
+#variable "impersonate_service_account" {
+#  type        = string
+#  description = "Service Account a impersonar (ej: is-sa-tf-infra@PROJ.iam.gserviceaccount.com)"
+#}
 
 variable "billing_project" {
   type        = string
@@ -28,12 +28,6 @@ variable "sql_instance_name" {
 variable "sql_database_version" {
   type    = string
   default = "POSTGRES_16"
-}
-
-variable "sql_edition" {
-  type        = string
-  description = "ENTERPRISE o ENTERPRISE_PLUS"
-  default     = "ENTERPRISE"
 }
 
 variable "sql_tier" {
@@ -81,7 +75,7 @@ variable "labels" {
 
 variable "deletion_protection" {
   type    = bool
-  default = true
+  default = false
 }
 
 # ========= Consumidor (PSC endpoint) =========
