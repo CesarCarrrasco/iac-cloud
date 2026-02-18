@@ -17,7 +17,7 @@ consumer_project_id      = "shared-vpc-383515"
 consumer_vpc             = "is-vpc-desarrollo"
 consumer_subnet          = "is-snet-dev-core-is-vpc-desarrollo-shared-vpc"
 psc_ip_name              = "gccspsp00-test-csql-prd"
-psc_ip                   = "10.43.150.119"
+psc_ip                   = "10.43.150.139"
 psc_forwarding_rule_name = "gccspsp00-test-net-csql-prd"
 psc_allow_global_access  = true
 
