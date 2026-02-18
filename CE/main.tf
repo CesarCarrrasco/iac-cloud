@@ -10,7 +10,7 @@ terraform {
 }
 
 # Para impersonación (cuando la uses):
-# export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT="is-sa-tf-infra@is-architecture.iam.gserviceaccount.com"
+# export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT="is-sa-ce-tf-infra@is-architecture.iam.gserviceaccount.com"
 provider "google" {}
 
 locals {

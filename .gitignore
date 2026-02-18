@@ -1,5 +1,11 @@
-**/.terraform/*
-*.tfstate
-*.tfstate.*
+# Terraform
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
 crash.log
 crash.*.log
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
