@@ -1,11 +1,28 @@
-# Terraform
+# --- Terraform artifacts (never commit) ---
 **/.terraform/
 **/*.tfstate
 **/*.tfstate.*
 crash.log
 crash.*.log
 
-# Editors/OS
+# --- Editors/OS ---
 .vscode/
 .idea/
 .DS_Store
+
+# --- Whitelist-only for stacks ---
+# Ignore EVERYTHING inside CE and SQL...
+CE/**
+SQL/**
+
+# ...except these files:
+!CE/backend.tf
+!CE/main.tf
+!CE/terraform.tfvars
+!CE/variables.tf
+
+!SQL/backend.tf
+!SQL/main.tf
+!SQL/terraform.tfvars
+!SQL/variables.tf
+
