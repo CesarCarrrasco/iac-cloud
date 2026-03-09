@@ -1,20 +1,17 @@
 vms = {
-  gccelxwsd15 = {
-    project_id    = "is-development-389114"
-    zone          = "us-east1-b"
-    instance_name = "gccelxwsd15"
+  gccelxwsu15-test02 = {                        ## Nombre de la nueva VM. Debe seguir la nomenclatura corporativa y estar en minúsculas.
+    environment = "uat"                         ## Ambiente destino: solo usar dev, uat o prd.
+    os_profile  = "win2022"                     ## Perfil de sistema operativo: rocky9, ubuntu2404 o win2022.
+    application = "cwrv"                        ## Label obligatorio: código de aplicación de IS.
+    ticket      = "sr-12341"                    ## Label obligatorio: ticket de Fresh Service asociado a la creación.
+    boot_disk_size_gb = 50                      ## Tamaño del disco booteable en GB.
+    network_ip        = "10.43.152.121"         ## IP fija de la VM. Usar:
+                                                ## dev = 10.43.150.X
+                                                ## uat = 10.43.152.X
+                                                ## prd = 10.43.154.X
 
-    boot_image        = "projects/rocky-linux-cloud/global/images/rocky-linux-9-optimized-gcp-v20260115"
-    boot_disk_size_gb = 50
-    machine_type      = "e2-medium"
-
-    network_ip           = "10.43.150.22"
-    subnetwork_self_link = "projects/shared-vpc-383515/regions/us-east1/subnetworks/is-snet-dev-core-is-vpc-desarrollo-shared-vpc"
-
-    runtime_sa_email = "844194900662-compute@developer.gserviceaccount.com"
-
-    environment = "DEV"
-    application = "WEBSERVIS"
-    ticket      = "SR-12341"
+    labels = {                                  ## Labels adicionales opcionales.
+      owner = "infra"                           ## Ejemplo: owner, area, squad, costcenter, backup, etc.
+    }
   }
 }
